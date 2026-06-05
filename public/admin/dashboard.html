@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script src="/assets/js/catalog-data.js"></script>
+    <script src="/assets/js/admin.js"></script>
+
+    <title>Dashboard | Sunexus</title>
+</head>
+
+<body class="admin-body">
+    <div class="admin-layout">
+        <div id="adminSidebar"></div>
+
+        <main class="admin-main">
+            <!-- <div class="admin-top">
+                <h1>Dashboard</h1>
+                <a class="btn" href="/admin/add-product.html">Add Product</a>
+            </div> -->
+
+            <div class="cards">
+
+                <div class="dash-card">
+                    <div class="dash-icon">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <p>Total Products</p>
+                    <h3 id="totalProducts">0</h3>
+                </div>
+
+                <!-- <div class="dash-card">
+                    <div class="dash-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <p>Categories</p>
+                    <h3 id="totalCategories">0</h3>
+                </div> -->
+
+                <div class="dash-card">
+                    <div class="dash-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <p>Active Products</p>
+                    <h3 id="activeProducts">0</h3>
+                </div>
+
+                <!-- <div class="dash-card">
+                    <div class="dash-icon">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <p>Enquiries</p>
+                    <h3 id="totalOrders">0</h3>
+                </div> -->
+
+            </div>
+
+            <div class="quick-links">
+
+                <a href="/admin/products.html" class="quick-card">
+                    <span><i class="fa-solid fa-boxes-stacked"></i></span>
+                    <h3>Manage Products</h3>
+                    <p>View, edit and delete products</p>
+                </a>
+
+                <a href="/admin/add-product.html" class="quick-card">
+                    <span><i class="fa-solid fa-plus"></i></span>
+                    <h3>Add Product</h3>
+                    <p>Add new catalogue product</p>
+                </a>
+
+                <!-- <a href="/admin/categories.html" class="quick-card">
+                    <span><i class="fa-solid fa-layer-group"></i></span>
+                    <h3>Categories</h3>
+                    <p>Manage product categories</p>
+                </a> -->
+
+                <!-- <a href="/admin/orders.html" class="quick-card">
+                    <span><i class="fa-solid fa-envelope-open-text"></i></span>
+                    <h3>Enquiries</h3>
+                    <p>Check customer enquiries</p>
+                </a>
+
+                <a href="/admin/settings.html" class="quick-card">
+                    <span><i class="fa-solid fa-gear"></i></span>
+                    <h3>Settings</h3>
+                    <p>Update website information</p>
+                </a> -->
+
+                <a href="/index.html" target="_blank" class="quick-card">
+                    <span><i class="fa-solid fa-globe"></i></span>
+                    <h3>View Website</h3>
+                    <p>Open public website</p>
+                </a>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

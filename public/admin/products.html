@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <script src="/assets/js/catalog-data.js"></script>
+    <script src="/assets/js/admin.js"></script>
+    <title>Manage Products | Sunexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body.admin-body {
+    background: #eef4f6;
+    overflow-x: hidden;
+}
+
+.admin-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+}
+
+.admin-menu-btn {
+    display: none;
+}
+
+.admin-sidebar {
+    background: #071b22;
+    color: #fff;
+    padding: 24px 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.admin-sidebar a {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin: 6px 0;
+    color: #dbe8ec;
+    font-weight: 700;
+}
+
+.admin-sidebar a:hover {
+    background: rgba(255, 255, 255, .09);
+}
+
+.admin-logo {
+    text-align: center;
+    padding: 14px 10px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    margin-bottom: 18px;
+}
+
+.admin-logo img {
+    max-width: 170px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+.admin-main {
+    padding: 24px;
+    margin: 0;
+    min-width: 0;
+}
+
+.admin-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 18px;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.admin-top h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+.table-card {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+    padding: 22px;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 14px;
+    border-bottom: 1px solid #edf2f4;
+}
+
+th {
+    background: #f7fafb;
+    color: #071b22;
+}
+
+.product-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    display: block;
+}
+
+#adminProducts td {
+    vertical-align: middle;
+}
+
+.danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+    border: none;
+    box-shadow: 0 6px 15px rgba(220, 38, 38, .25);
+}
+
+.danger:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    transform: translateY(-2px);
+}
+
+@media(max-width:1100px) {
+    .admin-layout {
+        grid-template-columns: 230px minmax(0, 1fr);
+    }
+}
+
+@media(max-width:900px) {
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-menu-btn {
+        display: flex;
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        width: 42px;
+        height: 42px;
+        border: none;
+        border-radius: 14px;
+        background: #071b22;
+        color: #fff;
+        font-size: 20px;
+        align-items: center;
+        justify-content: center;
+        z-index: 10003;
+        box-shadow: 0 10px 25px rgba(7, 27, 34, .25);
+        cursor: pointer;
+    }
+
+    .admin-sidebar {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 270px;
+        max-width: 82vw;
+        height: 100vh;
+        z-index: 10002;
+        transition: right .35s ease;
+        padding: 24px 18px;
+        overflow-y: auto;
+    }
+
+    body.admin-menu-open .admin-sidebar {
+        right: 0;
+    }
+
+    body.admin-menu-open::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        z-index: 10001;
+    }
+
+    .admin-logo {
+        margin-top: 46px;
+        padding-top: 0;
+    }
+
+    .admin-main {
+        padding: 14px 12px 18px;
+        width: 100%;
+    }
+
+    .admin-top {
+        padding-right: 52px;
+        margin: 0 0 12px;
+        min-height: 42px;
+        align-items: center;
+    }
+
+    .admin-top h1 {
+        font-size: 24px;
+    }
+}
+
+@media(max-width:700px) {
+    .table-card {
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        overflow: visible;
+        width: 100%;
+    }
+
+    .table-card table,
+    .table-card thead,
+    .table-card tbody,
+    .table-card tr,
+    .table-card td {
+        display: block;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .table-card thead,
+    .table-card th {
+        display: none;
+    }
+
+    #adminProducts {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        width: 100%;
+    }
+
+    #adminProducts tr {
+        background: #fff;
+        border-radius: 16px;
+        padding: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+        border: 1px solid #edf2f4;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    #adminProducts td {
+        border: none;
+        padding: 6px 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 12px;
+        word-break: break-word;
+    }
+
+    #adminProducts td::before {
+        font-weight: 700;
+        color: #071b22;
+        min-width: 56px;
+        flex-shrink: 0;
+    }
+
+    #adminProducts td:nth-child(1)::before {
+        display: none;
+    }
+
+    #adminProducts td:nth-child(2)::before {
+        content: "ID";
+    }
+
+    #adminProducts td:nth-child(3)::before {
+        content: "Product";
+    }
+
+    #adminProducts td:nth-child(4)::before {
+        content: "Category";
+    }
+
+    #adminProducts td:nth-child(5)::before {
+        content: "Brand";
+    }
+
+    #adminProducts td:nth-child(6)::before {
+        content: "Action";
+    }
+
+    #adminProducts td:first-child {
+        display: block;
+        padding-bottom: 8px;
+    }
+
+    .product-thumb {
+        width: 100%;
+        height: 105px;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+
+    #adminProducts td:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding-top: 10px;
+    }
+
+    #adminProducts td:last-child .btn,
+    #adminProducts td:last-child .danger {
+        flex: 1 1 100%;
+        min-width: 0;
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
+@media(max-width:420px) {
+    .admin-main {
+        padding: 12px 10px 16px;
+    }
+
+    .admin-top {
+        padding-right: 50px;
+        margin-bottom: 10px;
+        min-height: 40px;
+    }
+
+    .admin-top h1 {
+        font-size: 22px;
+    }
+
+    #adminProducts {
+        gap: 10px;
+    }
+
+    #adminProducts tr {
+        padding: 10px;
+        border-radius: 14px;
+    }
+
+    .product-thumb {
+        height: 92px;
+    }
+
+    #adminProducts td {
+        font-size: 11px;
+        gap: 6px;
+    }
+
+    #adminProducts td::before {
+        min-width: 48px;
+        font-size: 11px;
+    }
+}
+
+@media(max-width:340px) {
+    #adminProducts {
+        grid-template-columns: 1fr;
+    }
+
+    .product-thumb {
+        height: 130px;
+    }
+}
+</style>
+</head>
+
+<body class="admin-body">
+    <div class="admin-layout">
+        <div id="adminSidebar"></div>
+        <main class="admin-main">
+            <div class="admin-top">
+                <h1>Manage Products</h1>
+                <!-- <a class="btn" href="/admin/add-product.html">Add Product</a> -->
+            </div>
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Brand/Type</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminProducts"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

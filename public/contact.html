@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Contact | Sunexus</title>
+</head>
+
+<body>
+    <div id="header"></div>
+    <section class="page-hero"
+        style="--bg:url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1700&q=80')">
+        <h1>Contact & Product Enquiry</h1>
+        <p>Send your requirement for solar and electrical products.</p>
+    </section>
+    <section class="section">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h2>Get Quote</h2>
+                <form class="form" onsubmit="sendEnquiryToWhatsApp(event)">
+  <input id="name" placeholder="Your Name" required>
+  <input id="phone" placeholder="Phone Number" required>
+  <input id="email" placeholder="Email">
+
+  <select id="product">
+    <option>Solar Inverters</option>
+    <option>ACDB/DCDB</option>
+    <option>Earthing Kits</option>
+    <option>Solar Wires & Cables</option>
+    <option>MCB & SPD</option>
+    <option>Solar Structure</option>
+    <option>Other Products</option>
+  </select>
+
+  <textarea id="message" rows="5" placeholder="Write your product requirement"></textarea>
+
+  <button class="btn" type="submit">Submit Enquiry</button>
+</form>
+            </div>
+            <div class="contact-card">
+                <h2>Contact Details</h2>
+                <p><b>Email:</b> info@sunexusenergy.com</p>
+                <p><b>Website:</b> www.sunexusenergy.com</p>
+                <p><b>Phone:</b> 91-8744003837 / 91-9217756106</p>
+                <p><b>Address:</b> C-102, Site-B, Surajpur Industrial Area, Greater Noida, Gautam Buddha Nagar, Uttar
+                    Pradesh - 201310</p>
+            </div>
+        </div>
+    </section>
+    <div id="footer"></div>
+    <script src="/assets/js/main.js"></script>
+    <script>
+function sendEnquiryToWhatsApp(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const product = document.getElementById("product").value;
+  const message = document.getElementById("message").value.trim();
+
+  const whatsappNumber = "918744003837";
+
+  const text =
+`New Product Enquiry
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email || "Not provided"}
+Product: ${product}
+Requirement: ${message || "Not provided"}`;
+
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+  window.open(url, "_blank");
+}
+</script>
+</body>
+
+</html>

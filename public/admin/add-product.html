@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="/assets/js/catalog-data.js"></script>
+    <script src="/assets/js/admin.js"></script>
+    <title>Add Product | Sunexus</title>
+</head>
+
+<body class="admin-body">
+    <div class="admin-layout">
+        <div id="adminSidebar"></div>
+        <main class="admin-main">
+            <div class="admin-top">
+                <h1>Add Product</h1>
+            </div>
+            <div class="form-card">
+               <form class="admin-form" id="addProductForm">
+  <input name="name" placeholder="Product Name" required>
+
+  <select name="category" required>
+    <option>Inverters</option>
+    <option>Distribution Boards</option>
+    <option>Wires & Cables</option>
+    <option>Earthing & Protection</option>
+    <option>Cable Accessories</option>
+    <option>Solar Structures</option>
+  </select>
+
+  <input name="brand" placeholder="Brand / Type">
+  <input name="price" placeholder="Price / On Request">
+  <textarea name="description" rows="5" placeholder="Product Description"></textarea>
+  <input name="imageFile" type="file" accept="image/*" multiple required>
+<small>You can select multiple product images.</small>
+
+  <button class="btn">Save Product</button>
+</form>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

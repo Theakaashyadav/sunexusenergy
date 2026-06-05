@@ -1,0 +1,122 @@
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Call Button -->
+<div class="floating-call">
+    <a href="tel:+919876543210">
+        <i class="fa-solid fa-phone-volume"></i>
+    </a>
+</div>
+
+<!-- WhatsApp Button -->
+<div class="floating-whatsapp">
+    <a href="https://wa.me/919876543210" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+
+<style>
+.floating-call,
+.floating-whatsapp{
+    position:fixed;
+    right:25px;
+    z-index:9999;
+}
+
+.floating-call{
+    bottom:105px;
+}
+
+.floating-whatsapp{
+    bottom:25px;
+}
+
+/* Common Style */
+.floating-call a,
+.floating-whatsapp a{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:30px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+/* Fix Icon Orientation */
+.floating-call i,
+.floating-whatsapp i{
+    transform:none !important;
+    rotate:0deg !important;
+    line-height:1;
+}
+
+/* Call */
+.floating-call a{
+    background:#0d6efd;
+    box-shadow:0 12px 35px rgba(13,110,253,.4);
+    animation:pulseCall 2s infinite;
+}
+
+/* WhatsApp */
+.floating-whatsapp a{
+    background:#25D366;
+    box-shadow:0 12px 35px rgba(37,211,102,.4);
+    animation:pulseWhatsapp 2s infinite;
+}
+
+.floating-call a:hover,
+.floating-whatsapp a:hover{
+    transform:scale(1.1);
+}
+
+@keyframes pulseCall{
+    0%{
+        box-shadow:0 0 0 0 rgba(13,110,253,.7);
+    }
+    70%{
+        box-shadow:0 0 0 18px rgba(13,110,253,0);
+    }
+    100%{
+        box-shadow:0 0 0 0 rgba(13,110,253,0);
+    }
+}
+
+@keyframes pulseWhatsapp{
+    0%{
+        box-shadow:0 0 0 0 rgba(37,211,102,.7);
+    }
+    70%{
+        box-shadow:0 0 0 18px rgba(37,211,102,0);
+    }
+    100%{
+        box-shadow:0 0 0 0 rgba(37,211,102,0);
+    }
+}
+
+@media(max-width:768px){
+
+    .floating-call,
+    .floating-whatsapp{
+        right:18px;
+    }
+
+    .floating-call{
+        bottom:92px;
+    }
+
+    .floating-whatsapp{
+        bottom:18px;
+    }
+
+    .floating-call a,
+    .floating-whatsapp a{
+        width:58px;
+        height:58px;
+        font-size:28px;
+    }
+}
+</style>

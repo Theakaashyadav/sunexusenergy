@@ -1,0 +1,1 @@
+const APP_CONFIG={API_URL:"PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",COMPANY:"Sunexus Power Energy Pvt. Ltd.",PHONE:"91-8744003837",EMAIL:"info@sunexusenergy.com"};

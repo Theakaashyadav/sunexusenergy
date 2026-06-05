@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="/assets/js/catalog-data.js"></script>
+  <script src="/assets/js/admin.js" defer></script>
+  <title>Edit Product | Sunexus</title>
+</head>
+
+<body class="admin-body">
+  <div class="admin-layout">
+    <div id="adminSidebar"></div>
+
+    <main class="admin-main">
+      <div class="admin-top">
+        <h1>Edit Product</h1>
+      </div>
+
+      <div class="form-card">
+        <form class="admin-form" id="editProductForm">
+          <input type="hidden" name="productId">
+
+          <input name="name" placeholder="Product Name" required>
+
+          <select name="category" required>
+            <option value="Inverters">Inverters</option>
+            <option value="Distribution Boards">Distribution Boards</option>
+            <option value="Wires & Cables">Wires & Cables</option>
+            <option value="Earthing & Protection">Earthing & Protection</option>
+            <option value="Cable Accessories">Cable Accessories</option>
+            <option value="Solar Structures">Solar Structures</option>
+          </select>
+
+          <input name="brand" placeholder="Brand / Type">
+          <input name="price" placeholder="Price / On Request">
+
+          <textarea name="description" rows="5" placeholder="Product Description"></textarea>
+
+          <div id="editPreviewWrap" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;"></div>
+
+<input type="file" name="imageFile" accept="image/*" multiple>
+<small>Select new images only if you want to replace old images.</small>
+
+          <button class="btn">Update Product</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
