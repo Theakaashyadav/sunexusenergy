@@ -1,14 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => { loadComp("header", "/components/header.html"); loadComp("footer", "/components/footer.html"); }); async function loadComp(id, url) { const el = document.getElementById(id); if (!el) return; el.innerHTML = await fetch(url).then(r => r.text()); setTimeout(() => { const b = document.querySelector('.menu-btn'), n = document.querySelector('.nav-links'); if (b && n) b.onclick = () => n.classList.toggle('show'); }, 50) } function imgForPage(name) { return name }
-
-fetch('floating.html')
-.then(response => response.text())
-.then(data => {
-    document.getElementById('floating-button').innerHTML = data;
-});
-
 document.addEventListener("DOMContentLoaded", () => {
     loadComp("header", "/components/header.html");
     loadComp("footer", "/components/footer.html");
+    loadFloatingButton();
 });
 
 async function loadComp(id, url) {
@@ -17,36 +10,51 @@ async function loadComp(id, url) {
 
     el.innerHTML = await fetch(url).then(r => r.text());
 
-    setTimeout(() => {
-        const menuBtn = document.querySelector(".menu-btn");
-        const navLinks = document.querySelector(".nav-links");
+    if (id === "header") {
+        initMobileMenu();
+    }
+}
 
-        if (!menuBtn || !navLinks) return;
+function initMobileMenu() {
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
 
-        // Toggle menu
-        menuBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            navLinks.classList.toggle("show");
-        });
+    if (!menuBtn || !navLinks) return;
 
-        // Prevent closing when clicking inside menu
-        navLinks.addEventListener("click", (e) => {
-            e.stopPropagation();
-        });
+    menuBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navLinks.classList.toggle("show");
+    });
 
-        // Close menu when clicking outside
-        document.addEventListener("click", () => {
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
             navLinks.classList.remove("show");
         });
+    });
 
-        // Close menu on window resize
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 980) {
-                navLinks.classList.remove("show");
-            }
+    document.addEventListener("click", (e) => {
+        if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+            navLinks.classList.remove("show");
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 980) {
+            navLinks.classList.remove("show");
+        }
+    });
+}
+
+function loadFloatingButton() {
+    const floatingBox = document.getElementById("floating-button");
+    if (!floatingBox) return;
+
+    fetch("/floating.html")
+        .then(response => response.text())
+        .then(data => {
+            floatingBox.innerHTML = data;
         });
-
-    }, 50);
 }
 
 function imgForPage(name) {
