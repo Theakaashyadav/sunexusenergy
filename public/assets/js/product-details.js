@@ -107,7 +107,7 @@ function loadProductDetails() {
       renderProductGallery(images, p.name);
 
       detailBox.innerHTML = `
-        <span class="tag">${p.category || "Product"}</span>
+        <!--<span class="tag">${p.category || "Product"}</span>-->
         <h1>${p.name}</h1>
         <p>${p.description || "No description available."}</p>
 
