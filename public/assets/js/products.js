@@ -64,7 +64,7 @@ function renderProducts(list = PRODUCTS) {
       </div>
 
       <div class="product-body">
-        <span class="tag">${p.category || ""}</span>
+        <!--<span class="tag">${p.category || ""}</span>-->
 
         <h3>${p.name || ""}</h3>
 
