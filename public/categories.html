@@ -1,1 +1,268 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/assets/css/style.css"><title>Categories | Sunexus</title></head><body><div id="header"></div><section class="page-hero" style="--bg:url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1700&q=80')"><h1>Product Categories</h1><p>Organized categories for solar and electrical project procurement.</p></section><section class="section"><div class="grid" id="catGrid"></div></section><script src="/assets/js/catalog-data.js"></script><script>document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const cats=[...new Set(CATALOG_PRODUCTS.map(p=>p.cat))];catGrid.innerHTML=cats.map(c=>`<a class="cat-card" href="/products.html"><h3>${c}</h3><p>${CATALOG_PRODUCTS.filter(p=>p.cat===c).length} products available</p></a>`).join('')},100)})</script><div id="footer"></div><script src="/assets/js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+       .about-story{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+/* CARD */
+.about-row{
+    display:grid;
+    grid-template-columns:380px 1fr;
+    align-items:center;
+    background:#fff;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 15px 45px rgba(0,0,0,.08);
+    transition:.35s ease;
+    border:1px solid rgba(0,0,0,.05);
+}
+
+.about-row:hover{
+    transform:translateY(-5px);
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+}
+
+.about-row.reverse{
+    grid-template-columns:1fr 380px;
+}
+
+.about-row.reverse .about-img{
+    order:2;
+}
+
+/* IMAGE */
+.about-img{
+    height:380px;
+    padding:20px;
+    background:linear-gradient(135deg,#f8fafc,#eef3f8);
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:30px;   /* Rounded container */
+    overflow:hidden;      /* Keep everything inside rounded corners */
+}
+
+.about-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:24px;   /* Rounded image */
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    transition:all .5s ease;
+    border:4px solid #fff;
+}
+
+.about-row:hover .about-img img{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 25px 50px rgba(0,0,0,.18);
+}
+
+/* FOUNDER IMAGE SPECIAL */
+.about-row:first-child .about-img{
+    background:linear-gradient(135deg,#f8f9fb,#eef3f8);
+}
+
+.about-row:first-child .about-img img{
+    object-fit:contain;
+    padding:15px;
+}
+
+/* CONTENT */
+.about-text{
+    padding:50px;
+}
+
+.about-text .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#f3b300;
+    color:#111;
+    padding:8px 18px;
+    border-radius:50px;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.about-text h2{
+    font-size:36px;
+    line-height:1.2;
+    margin-bottom:8px;
+    color:#111827;
+}
+
+.about-text h4{
+    color:#0b5f8a;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.about-text p{
+    color:#5f6672;
+    line-height:1.9;
+    font-size:16px;
+    margin:0;
+}
+
+/* MD CARD HIGHLIGHT */
+.about-row:first-child{
+    background:linear-gradient(135deg,#ffffff,#f8fbff);
+    border-left:6px solid #f3b300;
+}
+
+.about-row:first-child h2{
+    color:#0b5f8a;
+}
+
+.about-row:first-child h4{
+    color:#f3b300;
+    font-weight:700;
+}
+
+/* MOBILE */
+@media (max-width:992px){
+
+    .about-row,
+    .about-row.reverse{
+        grid-template-columns:1fr;
+    }
+
+    .about-row.reverse .about-img{
+        order:0;
+    }
+
+    .about-img{
+        height:320px;
+    }
+
+    .about-text{
+        padding:35px;
+    }
+
+    .about-text h2{
+        font-size:30px;
+    }
+}
+
+@media (max-width:576px){
+
+    .about-story{
+        gap:25px;
+    }
+
+    .about-img{
+        height:260px;
+    }
+
+    .about-text{
+        padding:25px;
+    }
+
+    .about-text h2{
+        font-size:26px;
+    }
+
+    .about-text h4{
+        font-size:16px;
+    }
+
+    .about-text p{
+        font-size:15px;
+        line-height:1.8;
+    }
+}
+
+.about-text p{
+    margin-bottom:16px;
+    line-height:1.8;
+    color:#555;
+}
+    </style>
+    <title>About | Sunexus</title>
+</head>
+
+<body>
+    <div id="header"></div>
+    <section class="page-hero"
+        style="--bg:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1700&q=80')">
+        <h1>About Sunexus Power Energy Pvt. Ltd.</h1>
+        <p>Reliable supplier for solar, electrical and power-energy products.</p>
+    </section>
+    <section class="section">
+    <div class="about-story">
+
+        <div class="about-row">
+            <div class="about-img">
+                <img src="assets/images/rajeev.jpg" alt="Solar company">
+            </div>
+
+            <div class="about-text">
+                <!-- <span class="tag">Founder Message</span> -->
+                <h2>Rajeev Kumar</h2>
+                <h4>Managing Director</h4>
+               <p>
+    Rajeev Kumar (M.Tech in Electronics & Communication) is a Renewable Energy and Solar Power professional with over 15 years of experience in the power and energy sector, specializing in solar and electrical projects.
+</p>
+
+<p>
+    As the Managing Director of Sunexus Power Energy Pvt. Ltd., he leads the company with a focus on quality, innovation, customer satisfaction, and sustainable growth.
+</p>
+
+<p>
+    His technical expertise and industry experience continue to drive the delivery of reliable and efficient energy solutions across diverse projects.
+</p>
+            </div>
+        </div>
+
+        <div class="about-row reverse">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Company office">
+            </div>
+
+            <div class="about-text">
+                <span class="tag">Operations Message</span>
+                <h2>Message from Operations Head</h2>
+                <h4>Operations & Supply Head</h4>
+                <p>
+                    We focus on product availability, quality assurance and timely support so every residential,
+                    commercial and industrial solar project gets dependable components.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-row">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Team meeting">
+            </div>
+
+            <div class="about-text">
+                <span class="tag">Technical Message</span>
+                <h2>Message from Technical Team</h2>
+                <h4>Solar & Electrical Solutions Team</h4>
+                <p>
+                    From inverters and ACDB/DCDB to earthing, wires, connectors and mounting structures, we provide
+                    practical product solutions for reliable solar installation.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+    <div id="footer"></div>
+    <script src="/assets/js/main.js"></script>
+    <div id="floating-button"></div>
+</body>
+
+</html>
