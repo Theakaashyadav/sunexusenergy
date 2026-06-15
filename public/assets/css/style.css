@@ -126,7 +126,7 @@ a {
 }
 
 .hero {
-    min-height: 920px;
+    min-height: 620px;
     background: linear-gradient(100deg, rgba(7, 27, 34, .90), rgba(17, 43, 51, .60)), url('../images/hero.jpg') center/cover;
     display: flex;
     align-items: center;
